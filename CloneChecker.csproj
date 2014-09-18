@@ -31,12 +31,27 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Reference Include="TerrariaServer" />
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>..\..\..\Desktop\TShock.1241\ServerPlugins\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\Desktop\TShock.1241\ServerPlugins\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web">
+      <HintPath>..\..\..\Desktop\TShock.1241\ServerPlugins\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Desktop\TShock.1241\ServerPlugins\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="TerrariaServer">
+      <HintPath>..\..\..\Desktop\TShock.1241\TerrariaServer.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="TShockAPI" />
+    <Reference Include="TShockAPI">
+      <HintPath>..\..\..\Desktop\TShock.1241\ServerPlugins\TShockAPI.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Global.cs" />
     <Compile Include="MoreAdminCommands\MoreAdminCommands.cs" />
   </ItemGroup>
 </Project>
