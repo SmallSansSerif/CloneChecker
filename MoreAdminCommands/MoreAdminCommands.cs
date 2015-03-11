@@ -10,7 +10,7 @@
     using Terraria;
     using TShockAPI;
 
-    [ApiVersion(1, 16)]
+    [ApiVersion(1, 17)]
     public class MoreAdminCommands : TerrariaPlugin
     {
         public static bool informOnConnect = true;
@@ -45,7 +45,7 @@
         {
             if (disposing)
             {
-                ServerApi.Hooks.GameInitialize.Deregister(this, (args) => { OnInitialize(); });
+                ServerApi.Hooks.GameInitialize.Deregister(this, OnInitialize);
                 ServerApi.Hooks.ServerJoin.Deregister(this, OnJoin);
             }
             base.Dispose(disposing);
@@ -69,7 +69,7 @@
 
         public override void Initialize()
         {
-            ServerApi.Hooks.GameInitialize.Register(this, (args) => { OnInitialize(); });
+            ServerApi.Hooks.GameInitialize.Register(this, OnInitialize);
             ServerApi.Hooks.ServerJoin.Register(this, OnJoin);
 
         }
@@ -134,12 +134,12 @@
             }
         }
 
-        public void OnInitialize()
+        public void OnInitialize(EventArgs args)
         {
             List<string> permissions = new List<string> { "clonecheck", "clonechecknotify" };
             TShock.Groups.AddPermissions("trustedadmin", permissions);
-            Commands.ChatCommands.Add(new Command("clonecheck", new CommandDelegate(this.WhoIs), new string[] { "whois" }));
-            Commands.ChatCommands.Add(new Command("clonechecknotify", new CommandDelegate(this.ToggleCloneNotify), new string[] { "toggleclonenotify" }));
+            Commands.ChatCommands.Add(new Command("clonecheck", WhoIs, "whois"));
+            Commands.ChatCommands.Add(new Command("clonechecknotify", ToggleCloneNotify, "toggleclonenotify"));
             this.loadConfig();
             this.load();
         }
@@ -262,7 +262,7 @@
         public void ToggleCloneNotify(CommandArgs args)
         {
             informOnConnect = !informOnConnect;
-            args.Player.SendMessage("Alias notifications on join have been turned " + (informOnConnect ? "on." : "off."), Color.Green);
+            args.Player.SendSuccessMessage("Alias notifications on join have been turned " + (informOnConnect ? "on." : "off."));
         }
 
         public void WhoIs(CommandArgs args)
@@ -289,7 +289,7 @@
                     }
                     else
                     {
-                        args.Player.SendMessage("No usernames logged under that IP address", Color.Red);
+                        args.Player.SendErrorMessage("No usernames logged under that IP address");
                     }
                 }
                 else
@@ -297,11 +297,11 @@
                     List<TSPlayer> list = TShock.Utils.FindPlayer(args.Parameters[0]);
                     if (list.Count <= 0)
                     {
-                        args.Player.SendMessage("No players matched that name.", Color.Red);
+                        args.Player.SendErrorMessage("No players matched that name.");
                     }
                     else if (list.Count > 1)
                     {
-                        args.Player.SendMessage(list.Count.ToString() + " players matched.", Color.Red);
+                        args.Player.SendErrorMessage(list.Count.ToString() + " players matched.");
                     }
                     else
                     {
@@ -324,7 +324,7 @@
                         }
                         else
                         {
-                            args.Player.SendMessage("Error occured, player not found in the database, attempting to add.", Color.Red);
+                            args.Player.SendErrorMessage("Error occured, player not found in the database, attempting to add.");
                             this.add(list[0].IP, list[0].Name);
                         }
                     }
@@ -332,7 +332,7 @@
             }
             else
             {
-                args.Player.SendMessage("No arguments were given.  Proper syntax: /whois IP/Username", Color.Red);
+                args.Player.SendErrorMessage("No arguments were given.  Proper syntax: /whois IP/Username");
             }
         }
 
