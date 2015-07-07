@@ -10,7 +10,7 @@
     using Terraria;
     using TShockAPI;
 
-    [ApiVersion(1, 17)]
+    [ApiVersion(1, 18)]
     public class MoreAdminCommands : TerrariaPlugin
     {
         public static bool informOnConnect = true;
