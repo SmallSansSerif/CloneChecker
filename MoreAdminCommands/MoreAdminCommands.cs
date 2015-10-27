@@ -1,4 +1,8 @@
-﻿namespace MoreAdminCommands
+﻿/*
+ * Original plugin by DaGamesta.
+*/
+
+namespace MoreAdminCommands
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +13,7 @@
     using TerrariaApi.Server;
     using TShockAPI;
 
-    [ApiVersion(1, 21)]
+    [ApiVersion(1, 22)]
     public class MoreAdminCommands : TerrariaPlugin
     {
         public static bool informOnConnect = true;
@@ -339,7 +343,7 @@
         {
             get
             {
-                return "Created by DaGamesta";
+                return "Zaicon";
             }
         }
 
@@ -347,7 +351,7 @@
         {
             get
             {
-                return "";
+                return "Tracks each player's character names.";
             }
         }
 
@@ -355,7 +359,7 @@
         {
             get
             {
-                return "Clone Checker";
+                return "CloneChecker";
             }
         }
 
