@@ -13,7 +13,7 @@ namespace MoreAdminCommands
     using TerrariaApi.Server;
     using TShockAPI;
 
-    [ApiVersion(1, 24)]
+    [ApiVersion(1, 23)]
     public class MoreAdminCommands : TerrariaPlugin
     {
         public static bool informOnConnect = true;
