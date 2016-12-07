@@ -4,7 +4,8 @@
 
 namespace MoreAdminCommands
 {
-    using System;
+	using Microsoft.Xna.Framework;
+	using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -13,7 +14,7 @@ namespace MoreAdminCommands
     using TerrariaApi.Server;
     using TShockAPI;
 
-    [ApiVersion(1, 25)]
+    [ApiVersion(1, 26)]
     public class MoreAdminCommands : TerrariaPlugin
     {
         public static bool informOnConnect = true;
