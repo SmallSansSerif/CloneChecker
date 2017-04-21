@@ -34,15 +34,18 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Reference Include="OTAPI">
+      <HintPath>..\Server\OTAPI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="MoreAdminCommands\MoreAdminCommands.cs" />
     <Reference Include="TerrariaServer">
-      <HintPath>References\TerrariaServer.exe</HintPath>
+      <HintPath>..\Server\TerrariaServer.exe</HintPath>
     </Reference>
     <Reference Include="TShockAPI">
-      <HintPath>References\TShockAPI.dll</HintPath>
+      <HintPath>..\Server\ServerPlugins\TShockAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

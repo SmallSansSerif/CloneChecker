@@ -2,6 +2,8 @@
  * Original plugin by DaGamesta.
 */
 
+
+
 namespace MoreAdminCommands
 {
     using System;
@@ -12,8 +14,9 @@ namespace MoreAdminCommands
     using Terraria;
     using TerrariaApi.Server;
     using TShockAPI;
+    using Microsoft.Xna.Framework;
 
-    [ApiVersion(1, 25)]
+    [ApiVersion(2, 1)]
     public class MoreAdminCommands : TerrariaPlugin
     {
         public static bool informOnConnect = true;
